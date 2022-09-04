@@ -20,3 +20,23 @@ import time
 # start_time = time.time()
 # end_time = time.time()
 # difference = e - s
+
+
+def benchmark(func):
+    def wrapper(*args, **kwargs):
+        start_time = time.time()
+        print(f"Выполняем {func.__name__} с args: {args} и kwargs: {kwargs}/n Время начала: {start_time}")
+        res = func(*args, **kwargs)
+        end_time = time.time()
+        print(f"Выполнено {func.__name__}/n Время окончания: {end_time}\n Всего затрачено времени на выполнение: {end_time - start_time}")
+        return res
+
+    return wrapper
+
+
+def class_benchmark(cls):
+    call_attr = {k: v for k, v in cls.__dict__items() if callable(v)}
+    for name, value in call_attr.items():
+        decorated = benchmark(value)
+        setattr(cls, name, decorated)
+    return cls
