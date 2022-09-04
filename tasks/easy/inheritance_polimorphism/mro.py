@@ -28,34 +28,29 @@ from abc import ABC, abstractmethod
 class Device(ABC):
     name: str
 
-    def __init__(self, name):
-        self.name = name
-
     @abstractmethod
-    def process_doc(self):
+    def process_doc(self, name):
         raise NotImplementedError
 
 
 class Scanner(Device):
 
     def process_doc(self, name):
-        print(f"Сканирую документ: {self.name}")
+        print(f"Сканирую документ: {name}")
 
 
 class Copier(Device):
 
     def process_doc(self, name):
-        print(f"Делаю копию: {self.name}")
+        print(f"Делаю копию: {name}")
 
 
 class MFU(Scanner, Copier):
 
     def process_doc(self, name):
-        print(f"Сканирую, отправляю факс: {self.name}")
+        print(f"Сканирую, отправляю факс: {name}")
 
-
-if "__name__" == "__main__":
-    MFU_1 = MFU("word")
-    Copier_1 = Copier()
-    print(MFU_1.process_doc)
-    print(Copier_1.process_doc)
+MFU_1 = MFU()
+Copier_1 = Copier()
+print(MFU_1.process_doc("Doc"))
+print(Copier_1.process_doc("Doc"))

@@ -35,10 +35,8 @@ class GermanyPerson:
     def i_love_science(self):
         return ("ich liebe Wissenschaft")
 
-
-if __name__ == "__main__":
-    def person_love_science(obj):
-        return (f"{obj.__class__.__name__} says that:{obj.i_love_science()}")
+def person_love_science(obj):
+    return (f"{obj.__class__.__name__} says that:{obj.i_love_science()}")
 
 John = AmericanPerson()
 Iwan = RussianPerson()

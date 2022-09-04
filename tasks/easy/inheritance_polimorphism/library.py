@@ -41,7 +41,7 @@ class LibraryReader(Person):
     uid: int
     books: set
 
-    def __init__(self, fullname, phone, uid, books):
+    def __init__(self, fullname, phone, uid):
         self.fullname = fullname
         self.phone = phone
         self.uid = uid
@@ -56,13 +56,13 @@ class LibraryReader(Person):
         if len(list_1) == 1:
             return(f"{self.fullname} взял(а) книги: {list_1[0]}")
         elif len(list_1) == 2:
-            return (f"{self.fullname} взял(а) книги: {list_1[0]}, {list_1[1]}")
+            return (f"{self.fullname} взял(а) книги: {list_1[0]},{list_1[1]}")
         elif len(list_1) == 3:
-            return (f"{self.fullname} взял(а) книги: {list_1[0]}, {list_1[1]}, {list_1[2]}")
+            return (f"{self.fullname} взял(а) книги: {list_1[0]},{list_1[1]},{list_1[2]}")
         elif len(list_1) > 3:
             return (f"{self.fullname} взял(а) 4 книги")
 
-    def return_books(self, *args):
+    def return_book(self, *args):
         list_2 = []
         for i in args:
             if i not in self.books:
@@ -74,14 +74,20 @@ class LibraryReader(Person):
         if len(list_2) == 1:
             return (f"{self.fullname} вернул(а) книги: {list_2[0]}")
         elif len(list_2) == 2:
-            return (f"{self.fullname} вернул(а) книги: {list_2[0]}, {list_2[1]}")
+            return (f"{self.fullname} вернул(а) книги: {list_2[0]},{list_2[1]}")
         elif len(list_2) == 3:
-            return (f"{self.fullname} вернул(а) книги: {list_2[0]}, {list_2[1]}, {list_2[2]}")
+            return (f"{self.fullname} вернул(а) книги: {list_2[0]},{list_2[1]},{list_2[2]}")
         elif len(list_2) > 3:
             return (f"{self.fullname} вернул(а) 4 книги")
 
 
-a = LibraryReader("AnnaT", 3316835, 331, ())
-print(a.take_books("Приключения", "Фантастика", "Роман", "Рассказы", "Ужасы"))
-print(a.return_books("Ужасы", "Фантастика", "Рассказы"))
-print(a.books)
+a = LibraryReader("AnnaT", 3316835, 331)
+library_reader = LibraryReader("Fullname", "375557894545", 123)
+print(library_reader.fullname)
+print(library_reader.phone)
+print(library_reader.uid)
+print(library_reader.books)
+
+print(library_reader.take_books("Азбука", "Буратино","Весна", "Дом у озера", "Оно", "Страна радости"))
+
+print(library_reader.books)

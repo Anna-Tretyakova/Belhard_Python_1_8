@@ -20,23 +20,25 @@ class Animal:
     def __init__(self, name):
         self.name = name
 
-
+    def says(self):
+        pass
+\
 class Cat(Animal):
 
     def says(self):
-        return(f"{self.name} - кошка. Говорит МЯУ")
+        return(f"{self.name} - кошка. Говорит МЯУ!")
 
 
 class Dog(Animal):
 
     def says(self):
-        return (f"{self.name} - собака. Говорит ГАВ")
+        return (f"{self.name} - собака. Говорит ГАВ!")
 
 
 class Cow (Animal):
 
     def says(self):
-        return (f"{self.name} - корова. Говорит МУ")
+        return (f"{self.name} - корова. Говорит МУ!")
 
 
 a = Cow("Бурка")

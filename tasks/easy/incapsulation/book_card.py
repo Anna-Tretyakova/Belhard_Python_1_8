@@ -86,9 +86,10 @@ class BookCard:
     @title.setter
     def title(self, value):
         """
-        Устанавливаем ограничения для автора - сеттер
+        Устанавливаем ограничения для названия - сеттер
         """
         if not isinstance(value, str):
             raise ValueError
         else:
             self.__title = value
+

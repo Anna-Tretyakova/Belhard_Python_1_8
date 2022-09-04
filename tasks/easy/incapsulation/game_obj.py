@@ -11,24 +11,24 @@
 
 
 class GameObject:
-    __x: int
-    __y: int
-
+    _x: int
+    _y: int
     def __init__(self, x, y):
-        self.__x = x
-        self.__y = y
+        self._x = x
+
+        self._y = y
 
     @property
-    def __x(self):
-        return self.__x
+    def _x(self):
+        return self._x
 
     @property
-    def __y(self):
-        return self.__y
+    def _y(self):
+        return self._y
 
-    def move(__x, __y, delta):
+    def move(self, delta):
         delta = input(delta)
-        __x += delta
-        __y += delta
-        return __x
-        return __y
+        self._x += delta
+        self._y += delta
+        return self._x
+        return self._y
