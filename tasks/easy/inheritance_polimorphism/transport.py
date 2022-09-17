@@ -41,7 +41,7 @@ class Transport(ABC):
     color: str
     mileage: int
 
-    def __init__(self, brand, model, issue_year, color):
+    def __init__(self, brand: str, model: str, issue_year: int, color: str, mileage: int = None):
         self.brand = brand
         self.model = model
         self.issue_year = issue_year
@@ -49,47 +49,34 @@ class Transport(ABC):
         self.mileage = 0
 
     @abstractmethod
-    def move(self, num_km):
-        if num_km < 0:
-            raise ValueError("Расстояние должно быть положительным числом")
-        else:
+    def move(self, num_km: int):
+        if num_km > 0:
             self.mileage += num_km
+        else:
+            raise ValueError("Расстояние должно быть положительным числом")
 
 
 class Car(Transport):
-    engine: str
+    engine_type: str
 
     def __init__(self, brand, model, issue_year, color, engine_type):
-        self.brand = brand
-        self.model = model
-        self.issue_year = issue_year
-        self.color = color
+        super.__init__(brand, model, issue_year, color)
         self.engine_type = engine_type
         self.mileage = 0
 
     def move(self, num_km):
         super().move(num_km)
-        print(f"{self.brand} {self.model} ({self.color} - {self.issue_year}) проехала {self.mileage}  километров")
+        return f"{self.brand} {self.model} ({self.color} - {self.issue_year}) проехала {self.mileage}  километров"
 
 
 class Airplane(Transport):
     lifting_capacity: int
 
     def __init__(self, brand, model, issue_year, color, lifting_capacity):
-        self.brand = brand
-        self.model = model
-        self.issue_year = issue_year
-        self.color = color
+        super().__init__(brand, model, issue_year, color)
         self.lifting_capacity = lifting_capacity
         self.mileage = 0
 
     def move(self, num_km):
         super().move(num_km)
         print(f"{self.brand} {self.model} ({self.color} - {self.issue_year}) пролетел {self.mileage}  километров")
-
-
-VW = Car("VW", "Golf", 2010, "grey", "turbo")
-print(VW.move(10))
-
-VW = Airplane("VW", "Golf", 2010, "grey", 1000)
-print(VW.move(10))

@@ -13,22 +13,21 @@
 class GameObject:
     _x: int
     _y: int
-    def __init__(self, x, y):
-        self._x = x
 
+    def __init__(self, x: int, y: int):
+        self._x = x
         self._y = y
 
     @property
-    def _x(self):
+    def x(self):
         return self._x
 
     @property
-    def _y(self):
+    def y(self):
         return self._y
 
-    def move(self, delta):
-        delta = input(delta)
-        self._x += delta
-        self._y += delta
+    def move(self, delta_x: int, delta_y: int):
+        self._x += delta_x
+        self._y += delta_y
         return self._x
         return self._y

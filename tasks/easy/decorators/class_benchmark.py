@@ -23,10 +23,13 @@ import time
 
 
 def class_benchmark(cls):
-    call_attr = {k: v for k, v in cls.attr.items() if callable(v)}
-    for name, value in call_attr.items():
-        decorated = class_benchmark(value)
-        setattr(cls, name, decorated)
+    functions = {
+        name: value for name, value in cls.dict.items()
+        if callable(value) and not name.startswith("_")
+    }
+    for name, func in functions.items():
+        func_with_decor = def_benchmark(func)
+        setattr(cls, name, func_with_decor)
     return cls
 
 
@@ -39,5 +42,3 @@ def def_benchmark(func):
         print(f"Выполнено {func.__name__}\nВремя окончания: {end_time}\nВсего затрачено времени на выполнение: {end_time - start_time}")
         return res
     return wrapper
-
-

@@ -22,26 +22,23 @@ https://www.youtube.com/watch?v=8o7ZKTvZpLc
 
 
 class AmericanPerson:
-    def i_love_science(self):
-        return ("I love science")
+    @staticmethod
+    def i_love_science():
+        return "I love science"
 
 
 class RussianPerson:
-    def i_love_science(self):
-        return ("Я люблю науку")
+    @staticmethod
+    def i_love_science():
+        return "Я люблю науку"
 
 
 class GermanyPerson:
-    def i_love_science(self):
-        return ("ich liebe Wissenschaft")
+    @staticmethod
+    def i_love_science():
+        return "ich liebe Wissenschaft"
+
 
 def person_love_science(obj):
-    return (f"{obj.__class__.__name__} says that:{obj.i_love_science()}")
+    return f"{obj.__class.name} says that:{obj.i_love_science()}"
 
-John = AmericanPerson()
-Iwan = RussianPerson()
-Hans = GermanyPerson()
-
-print(person_love_science(John))
-print(person_love_science(Iwan))
-print(person_love_science(Hans))

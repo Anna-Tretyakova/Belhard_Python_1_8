@@ -26,14 +26,17 @@
 
 - магический метод __init__, который принимает a, вызывает super
 """
-
 import math
 
+from abc import ABC, abstractmethod
 
-class Shape:
+
+class Shape(ABC):
+    @abstractmethod
     def get_perimeter(self):
         pass
 
+    @abstractmethod
     def get_square(self):
         pass
 
@@ -70,8 +73,3 @@ class Square(Rectangle):
 
     def __init__(self, a):
         super().__init__(a, a)
-
-
-d = Circle(5)
-print(d.get_perimeter())
-print(d.get_square())

@@ -47,49 +47,44 @@ class BookCard:
 
     @property
     def year(self):
-        """
-        Возвращаем год - геттер
-        """
         return self.__year
-
     @year.setter
-    def year(self, value):
-        """
-        Устанавливаем ограничения для года книги - сеттер
-        """
-        if not isinstance(value, int):
-            raise ValueError("год должен быть целым числом")
-        elif isinstance(value, int):
-            if value < 0 or value > CURRENT_YEAR:
-                raise ValueError("год должен быть больше 0 и меньше текущего года")
+    def year(self, year):
+        if isinstance(year, int) and (0 < year <= CURRENT_YEAR):
+            self.__year = year
         else:
-            self.__year = value
+            raise ValueError
 
     @property
     def author(self):
         return self.__author
 
     @author.setter
-    def author(self, value):
-        if not isinstance(value, str):
-            raise ValueError
+    def author(self, author):
+        if isinstance(author, str):
+            self.__author = author
         else:
-            self.__author = value
+            raise ValueError
 
     @property
     def title(self):
         """
         Возвращаем название книги - геттер
         """
-        return self._title
+        return self.__title
 
     @title.setter
-    def title(self, value):
+    def title(self, title):
         """
         Устанавливаем ограничения для названия - сеттер
         """
-        if not isinstance(value, str):
-            raise ValueError
+        if isinstance(title, str):
+            self.__title = title
         else:
-            self.__title = value
+            raise ValueError
 
+
+
+
+
+a = BookCard(1,2,3)

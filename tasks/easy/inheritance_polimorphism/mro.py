@@ -36,21 +36,16 @@ class Device(ABC):
 class Scanner(Device):
 
     def process_doc(self, name):
-        print(f"Сканирую документ: {name}")
+        return f"Сканирую документ: {name}"
 
 
 class Copier(Device):
 
     def process_doc(self, name):
-        print(f"Делаю копию: {name}")
+        return f"Делаю копию: {name}"
 
 
 class MFU(Scanner, Copier):
 
     def process_doc(self, name):
-        print(f"Сканирую, отправляю факс: {name}")
-
-MFU_1 = MFU()
-Copier_1 = Copier()
-print(MFU_1.process_doc("Doc"))
-print(Copier_1.process_doc("Doc"))
+        return f"Сканирую, отправляю факс: {name}"

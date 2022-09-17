@@ -13,16 +13,20 @@ says таким образом, чтобы он возвращал строку 
 - "{кличка} - корова. Говорит МУ!" для класса Cow
 """
 
+from abc import ABC, abstractmethod
 
-class Animal:
+
+class Animal(ABC):
     name: str
 
     def __init__(self, name):
         self.name = name
 
+    @abstractmethod
     def says(self):
         pass
-\
+
+
 class Cat(Animal):
 
     def says(self):
@@ -39,13 +43,3 @@ class Cow (Animal):
 
     def says(self):
         return (f"{self.name} - корова. Говорит МУ!")
-
-
-a = Cow("Бурка")
-print(a.says())
-
-b = Cat("Мурка")
-print(b.says())
-
-c = Dog("Жулька")
-print(c.says())
